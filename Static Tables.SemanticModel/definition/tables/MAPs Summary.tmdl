@@ -24,7 +24,7 @@ table 'MAPs Summary'
 			        )
 			
 			    RETURN 
-			        difference
+			        difference * 2
 			
 			```
 		formatString: 0
