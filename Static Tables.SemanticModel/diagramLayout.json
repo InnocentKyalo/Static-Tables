@@ -11,7 +11,7 @@
         {
           "location": {
             "x": 0,
-            "y": 12
+            "y": 62
           },
           "nodeIndex": "Aging Bands",
           "nodeLineageTag": "6e1e8509-57a0-4c5a-aba4-07e45e0d648d",
@@ -24,12 +24,25 @@
         {
           "location": {
             "x": 284,
-            "y": 0
+            "y": 50
           },
           "nodeIndex": "MAPs Summary",
           "nodeLineageTag": "02ea0800-cd48-4dd2-8957-807a7d3aeaaa",
           "size": {
             "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 0
+          },
+          "nodeIndex": "Ledger Entry",
+          "nodeLineageTag": "bc2fb743-1644-43be-8cde-b1a8e419cc65",
+          "size": {
+            "height": 300,
             "width": 234
           },
           "zIndex": 0
