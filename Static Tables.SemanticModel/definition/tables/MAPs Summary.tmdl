@@ -1,0 +1,106 @@
+table 'MAPs Summary'
+	lineageTag: 02ea0800-cd48-4dd2-8957-807a7d3aeaaa
+
+	measure 'Aging Band Count' = ```
+			
+			    VAR minMonth = MIN('Aging Bands'[Min Month])
+			    VAR maxMonth = MAX('Aging Bands'[Max Month])
+			
+			    VAR rowCount = COUNTROWS('MAPs Summary')
+			
+			    VAR difference = 
+			        CALCULATE(
+			            COUNTROWS('MAPs Summary'),
+			            FILTER(
+			                'MAPs Summary',
+			                VAR diff = DATEDIFF(
+			                    'MAPs Summary'[CreatedDate],
+			                    'MAPs Summary'[MAPOwnerTargetCompletiondate],
+			                    MONTH
+			                )
+			
+			                RETURN diff >= minMonth && diff <= maxMonth
+			            )
+			        )
+			
+			    RETURN 
+			        difference
+			
+			```
+		formatString: 0
+		lineageTag: d0dc27c5-862e-49cc-b1dd-cab7488f48e6
+
+	measure 'Auditor vs MAP date Banded' =
+			
+			VAR MinM = MIN('Aging Bands'[Min Month])
+			VAR MaxM = MAX('Aging Bands'[Max Month])
+			
+			RETURN
+			    CALCULATE(
+			        COUNTROWS('MAPs Summary'),
+			        FILTER(
+			            'MAPs Summary',
+			            VAR diff = DATEDIFF(
+			                'MAPs Summary'[CreatedDate],
+			                'MAPs Summary'[MAPOwnerTargetCompletiondate],
+			                MONTH
+			            )
+			            RETURN diff >= MinM && diff < MaxM
+			        )
+			    )
+		formatString: 0
+		lineageTag: c1c12c2b-5f7b-458c-bbc0-717b0b72a950
+
+	column MAPOwner
+		dataType: string
+		lineageTag: 088b3e87-8e8a-479b-9dbe-65c12b36528f
+		summarizeBy: none
+		sourceColumn: MAPOwner
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ca396d8e-958e-426e-87c0-b92012427ba3
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		variation Variation
+			isDefault
+			relationship: b3e64d40-ce4f-4ef4-a62f-79d74422d6a4
+			defaultHierarchy: LocalDateTable_af1cbad7-68b5-4238-b90a-bc56ac08a5be.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MAPOwnerTargetCompletiondate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6b180402-b061-4a61-a876-689451e1b530
+		summarizeBy: none
+		sourceColumn: MAPOwnerTargetCompletiondate
+
+		variation Variation
+			isDefault
+			relationship: 3268d066-1127-44e4-a769-d7d170948e05
+			defaultHierarchy: LocalDateTable_4ade82a5-e6aa-4c05-a205-5958de344ad2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'MAPs Summary' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Lenovo\Downloads\MAPs Summary.xlsx"), null, true),
+				    #"MAPs Summary_Sheet" = Source{[Item="MAPs Summary",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"MAPs Summary_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"MAPOwner", type text}, {"CreatedDate", type date}, {"MAPOwnerTargetCompletiondate", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

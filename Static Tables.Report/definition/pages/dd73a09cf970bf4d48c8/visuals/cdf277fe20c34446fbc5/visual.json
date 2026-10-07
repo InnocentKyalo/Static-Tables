@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "cdf277fe20c34446fbc5",
+  "position": {
+    "x": 196.47416413373861,
+    "y": 122.55319148936171,
+    "z": 0,
+    "height": 280.1215805471125,
+    "width": 720.72948328267478,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Aging Bands"
+                    }
+                  },
+                  "Property": "Aging Band"
+                }
+              },
+              "queryRef": "Aging Bands.Aging Band",
+              "nativeQueryRef": "Aging Band",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MAPs Summary"
+                    }
+                  },
+                  "Property": "Aging Band Count"
+                }
+              },
+              "queryRef": "MAPs Summary.Aging Band Count",
+              "nativeQueryRef": "Aging Band Count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MAPs Summary"
+                    }
+                  },
+                  "Property": "Auditor vs MAP date Banded"
+                }
+              },
+              "queryRef": "MAPs Summary.Auditor vs MAP date Banded",
+              "nativeQueryRef": "Auditor vs MAP date Banded"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

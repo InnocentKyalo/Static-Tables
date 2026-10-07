@@ -1,0 +1,59 @@
+table 'Aging Bands'
+	lineageTag: 6e1e8509-57a0-4c5a-aba4-07e45e0d648d
+
+	column 'Aging Band'
+		lineageTag: 9470d375-3f1e-4454-aea1-d9d35a429fcd
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Aging Band]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Min Month'
+		formatString: 0
+		lineageTag: 6967e981-9c33-4361-a09c-b9b50d9158bb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Min Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Max Month'
+		formatString: 0
+		lineageTag: f7f06dd8-80ba-4d87-a8c0-d8e61ad13dec
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Max Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Order'
+		formatString: 0
+		lineageTag: 9f3e4d8a-1402-4b18-b456-790893c7d2e8
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Sort Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Aging Bands' = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Aging Band", STRING,
+				    "Min Month", INTEGER,
+				    "Max Month", INTEGER,
+				    "Sort Order", INTEGER,
+				    {
+				        { "<  1 Month", 1, 1, 1},
+				        { ">= 1 Month", 1, 2, 2},
+				        { ">= 2 Month", 2, 3, 3},
+				        { ">= 3 Month", 3, 4, 4},
+				        { ">= 4 Month", 4, 5, 5},
+				        { ">= 5 Month", 5, 6, 6},
+				        { ">= 6 Month", 6, 999, 7}
+				    })
+
+	annotation PBI_Id = 8d99b0365a29458c88cfb2567f31e251
+

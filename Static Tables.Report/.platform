@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Static Tables"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3539d20b-7e0f-4e68-ba59-47d10eb90f66"
+  }
+}

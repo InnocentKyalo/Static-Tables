@@ -1,0 +1,10 @@
+relationship b3e64d40-ce4f-4ef4-a62f-79d74422d6a4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'MAPs Summary'.CreatedDate
+	toColumn: LocalDateTable_af1cbad7-68b5-4238-b90a-bc56ac08a5be.Date
+
+relationship 3268d066-1127-44e4-a769-d7d170948e05
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'MAPs Summary'.MAPOwnerTargetCompletiondate
+	toColumn: LocalDateTable_4ade82a5-e6aa-4c05-a205-5958de344ad2.Date
+
