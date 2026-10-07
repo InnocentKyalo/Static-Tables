@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["MAPs Summary","Ledger Entry"]
+annotation PBI_QueryOrder = ["MAPs Summary"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -17,9 +17,6 @@ ref table 'MAPs Summary'
 ref table DateTableTemplate_5465aa02-9bc3-4c31-9eab-ec39044d5a00
 ref table LocalDateTable_af1cbad7-68b5-4238-b90a-bc56ac08a5be
 ref table LocalDateTable_4ade82a5-e6aa-4c05-a205-5958de344ad2
-ref table 'Ledger Entry'
-ref table LocalDateTable_80088d8b-1a0c-4ca7-a86f-da5daf573c38
-ref table LocalDateTable_c4941eb2-8983-4c69-831a-9143293bdf8d
 
 ref cultureInfo en-US
 
