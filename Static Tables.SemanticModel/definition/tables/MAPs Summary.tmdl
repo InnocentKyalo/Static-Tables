@@ -61,7 +61,7 @@ table 'MAPs Summary'
 
 	column CreatedDate
 		dataType: dateTime
-		formatString: Long Date
+		formatString: Short Date
 		lineageTag: ca396d8e-958e-426e-87c0-b92012427ba3
 		summarizeBy: none
 		sourceColumn: CreatedDate
